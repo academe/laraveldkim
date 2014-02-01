@@ -6,7 +6,7 @@ Sign all outgoing emails in Laravel with a DKIM signature.
 TODO
 ----
 
-* composer.json
+* composer.json and packagist (academe/laraveldkim)
 * tests
 * Links to some articles with more details about DKIM
 
