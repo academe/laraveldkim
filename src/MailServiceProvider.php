@@ -7,6 +7,8 @@
  * we replicate the entire core register method with no changes, except we are running it in
  * a new namespace. Ideally I would want to run the core method but in the local namespace.
  * Not sure if reflection can do this? Will investigate.
+ * I've posed this question here:
+ * http://stackoverflow.com/questions/21498618/can-i-execute-a-parent-method-in-the-namespace-of-a-child
  *
  * This method does not support chaining of signing packages. We extend the core mail service
  * to add the signing, and ignore the needs of other packages that may want to add their own
