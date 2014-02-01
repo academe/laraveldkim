@@ -24,7 +24,7 @@ public key. Google, Yahoo, Hotmail all do this check.
 
 Now, many applications will have DKIM handled for them by the operating system or the mail sending service
 (e.g. Sendgrid, or their ISP's SMTP server, or set up using Control Panel). In some instances this is not
-an option, and so this package was creeted to do the signing at the application level.
+an option, and so this package was created to do the signing at the application level.
 
 How to Use
 ----------
