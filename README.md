@@ -7,6 +7,7 @@ TODO
 ----
 
 * composer.json
+* tests
 
 How to Use
 ----------
@@ -18,6 +19,7 @@ Steps are:
 
 * Put code into application.
 * Add an autoload entry.
+* Add your private key settings.
 
 Put code into application
 -------------------------
@@ -45,3 +47,28 @@ For the composer autoloader to know how to use this, run the following command (
 
     php composer.phar dump-autoload
 
+Add your private key settings
+-----------------------------
+
+Your signing key details need to be added to the laravel application config. Add the following to your
+`mail.php` config file:
+
+
+    'dkim' => array(
+        'private_key' => <<<ENDDKIMKEY
+    -----BEGIN RSA PRIVATE KEY-----
+    ...your key goes in here...
+    -----END RSA PRIVATE KEY-----
+    ENDDKIMKEY
+        ,
+        'domain_name' => 'example.com',
+        'selector' => 'dkim',
+    ),
+
+
+Note that everything between the two instances of `ENDDKIMKEY` must be right up to the start of the line.
+You may be able to put the RSA key more easily into a dot-file (e.g. `.mail.prod.php`) for more security.
+
+The domain_name is the domain that email will be sent from. The selector is the selector you chose to
+store your public key against in your DNS. The public key in the above example will be stored in the
+TEXT entry of `dkim._domainkey.example.com`
