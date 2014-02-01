@@ -9,6 +9,22 @@ TODO
 * composer.json
 * tests
 
+Why would you use this?
+-----------------------
+
+Most applications need to send out mail. To look as little like SPAM as possible, there are a number of
+techniques that should be applied to sent mail. One is called Domain Keys Identified Mail (DKIM).
+
+DKIM works using a public/private key pair. The public key is stored in a TEXT record of the domain sending
+the email, so all recipients (mail servers) can see that. The private key is kept secret and used to 
+sign the outgoing message. The signature hases the message contents and headers, and adds the hash to the 
+top of the headers. Only someone with the private key can sign it in a way that can be validated by the
+public key. Google, Yahoo, Hotmail all do this check.
+
+Now, many applications will have DKIM handled for them by the operating system or the mail sending service
+(e.g. Sendgrid, or their ISP's SMTP server, or set up using Control Panel). In some instances this is not
+an option, and so this package was creeted to do the signing at the application level.
+
 How to Use
 ----------
 
