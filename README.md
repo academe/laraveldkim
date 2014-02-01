@@ -8,6 +8,7 @@ TODO
 
 * composer.json
 * tests
+* Links to some articles with more details about DKIM
 
 Why would you use this?
 -----------------------
