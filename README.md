@@ -66,6 +66,8 @@ For the composer autoloader to know how to use this, run the following command (
 
     php composer.phar dump-autoload
 
+This will take the psr-4 entry in composer.json and add it to composer's own run-time autoload mapping tables.
+
 Add your private key settings
 -----------------------------
 
