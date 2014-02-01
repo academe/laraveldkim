@@ -6,7 +6,6 @@ Sign all outgoing emails in Laravel with a DKIM signature.
 TODO
 ----
 
-* composer.json and packagist (academe/laraveldkim)
 * tests
 * Links to some articles with more details about DKIM
 
@@ -26,6 +25,16 @@ the signature and so can be rejected at the destination.
 Now, many applications will have DKIM handled for them by the operating system or the mail sending service
 (e.g. Sendgrid, or their ISP's SMTP server, or set up using Control Panel). In some instances this is not
 an option, and so this package was created to do the signing at the application level.
+
+Limitations
+-----------
+
+This package was written to fill a specific need, so may not be as flexible as you want. Do feel free to
+submit pull requests if you have any improvements.
+
+The package makes the assumption that you are using the built-in Laravel email provider.
+It also assumes that all emails will be coming from a single domain.
+All emails will be signed.
 
 How to Use
 ----------
