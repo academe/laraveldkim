@@ -20,6 +20,7 @@ Steps are:
 * Put code into application.
 * Add an autoload entry.
 * Add your private key settings.
+* Use the new mailer.
 
 Put code into application
 -------------------------
@@ -72,3 +73,27 @@ You may be able to put the RSA key more easily into a dot-file (e.g. `.mail.prod
 The domain_name is the domain that email will be sent from. The selector is the selector you chose to
 store your public key against in your DNS. The public key in the above example will be stored in the
 TEXT entry of `dkim._domainkey.example.com`
+
+Use the new mailer
+------------------
+
+Now we need to tell Laravel to use the custom mailer rather than the standard built-in mailer. This is done
+in the app.php config file.
+
+The `providers` array will have this entry:
+
+    'Illuminate\Mail\MailServiceProvider',
+
+Comment that out and replace it with this entry:
+
+    'Academe\LaravelDkim\MailServiceProvider',
+
+That's it. Your emails should now be signed with DKIM. You can check the headers in the source of emails that
+your application sends out and you should see the DKIM signature in there. It will look something like this:
+
+    DKIM-Signature: v=1; a=rsa-sha1; bh=Gwuoen3CG+KClMvlMKjUh1ZJmzg=;
+    d=example.com; h=Message-ID: Date: From: MIME-Version: Content-Type;
+    i=@example.com; s=dkim; t=1391259163;
+    b=cIkL/FZ6/v/XUdcYvhvmSo9abedf0DLlM/LYkOX4GoW4EUzPxN10hOHQpWlqjeDa2YdsI7GH
+    dGCc16Xgb2kpZbPEom0RMv62G4SYf8763abb7380ebMRP2tv0/Mq+CaOmQejk34vlBnzcj0JE
+    6PGOPxEEe9dgdoOMx4uEhhlkd=
