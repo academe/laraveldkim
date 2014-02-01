@@ -18,9 +18,10 @@ techniques that should be applied to sent mail. One is called Domain Keys Identi
 
 DKIM works using a public/private key pair. The public key is stored in a TEXT record of the domain sending
 the email, so all recipients (mail servers) can see that. The private key is kept secret and used to 
-sign the outgoing message. The signature hases the message contents and headers, and adds the hash to the 
+sign the outgoing message. The signature is a hash of the message content and some headers, and adds the hash to the 
 top of the headers. Only someone with the private key can sign it in a way that can be validated by the
-public key. Google, Yahoo, Hotmail all do this check.
+public key. Google, Yahoo, Hotmail all do this check. Any tampering of the message en-route will also break
+the signature and so can be rejected at the destination.
 
 Now, many applications will have DKIM handled for them by the operating system or the mail sending service
 (e.g. Sendgrid, or their ISP's SMTP server, or set up using Control Panel). In some instances this is not
