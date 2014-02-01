@@ -41,12 +41,12 @@ How to Use
 
 Steps are:
 
-* Include the package in your application application.
+* Include the package in your application.
 * Add your private key settings.
 * Use the new mailer.
 
-Include the package in your application application
----------------------------------------------------
+Include the package in your application
+---------------------------------------
 
 Add a requirement to your project's composer.json
 
