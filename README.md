@@ -32,9 +32,13 @@ Limitations
 This package was written to fill a specific need, so may not be as flexible as you want. Do feel free to
 submit pull requests if you have any improvements.
 
-The package makes the assumption that you are using the built-in Laravel email provider.
+The package makes the assumption that you are using the built-in Laravel email provider. If you are using
+other email packages such as [laravel-mailgun](https://github.com/killswitch/laravel-mailgun) then I 
+don't know it this will work (I don't know if other mail packages sit on top of Laravel's mail provider
+or replace it). Try it and let me know how it goes.
+
 It also assumes that all emails will be coming from a single domain.
-All emails will be signed.
+All emails will be signed with the same certificate.
 
 How to Use
 ----------
@@ -75,6 +79,7 @@ Your signing key details need to be added to the laravel application config. Add
 
 Note that everything between the two instances of `ENDDKIMKEY` must be right up to the start of the line.
 You may be able to put the RSA key more easily into a dot-file (e.g. `.mail.prod.php`) for more security.
+Another approach may be to read the key from a text file in the config file and return that.
 
 The domain_name is the domain that email will be sent from. The selector is the selector you chose to
 store your public key against in your DNS. The public key in the above example will be stored in the
