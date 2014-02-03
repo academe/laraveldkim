@@ -43,7 +43,7 @@ or replace it). Try it and let me know how it goes.
 It also assumes that all emails will be coming from a single domain. I did try giving Swift Mailer multiple
 certificates against multiple domains to see if it would choose the one that matched the sending address,
 but it just added all the certificates without question. A more sophisticated package would not need
-to do the signing until later in the request, once the sending domain is known, and then it can choose from
+to choose the signing components until later in the request, once the sending domain is known, and then it can choose from
 a bunch of certificates it is given to match the domain. However, if your application uses only one domain
 then that would be overkill. Just the one domain and certificate for now, and we will see how that goes.
 
