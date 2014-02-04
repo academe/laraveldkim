@@ -7,13 +7,13 @@ TODO
 ----
 
 * tests
-* Links to some articles with more details about DKIM
 
 Why would you use this?
 -----------------------
 
 Most applications need to send out mail. To look as little like SPAM as possible, there are a number of
-techniques that should be applied to sent mail. One is called Domain Keys Identified Mail (DKIM).
+techniques that should be applied to sent mail. One is called 
+[DomainKeys Identified Mail](http://www.dkim.org/) (DKIM).
 
 DKIM works using a public/private key pair. The public key is stored in a TEXT record of the domain sending
 the email, so all recipients (mail servers) can see that. The private key is kept secret and used to 
