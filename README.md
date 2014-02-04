@@ -89,6 +89,12 @@ Your signing key details need to be added to the laravel application config. Add
 Note that everything between the two instances of `ENDDKIMKEY` must be right up to the start of the line.
 You may be able to put the RSA key more easily into a dot-file (e.g. `.mail.prod.php`) for more security.
 Another approach may be to read the key from a text file in the config file and return that.
+The "mail.dkim.private_key" needs to be a string containing the full private key, with each line
+terminated with a newline character. It may be safer, if stored as a PHP string, to concatenate each
+line of the key in double-quotes with explicit embedded newlines, like this:
+`"-----BEGIN RSA PRIVATE KEY-----\n" . "line 1\n" . "line 2\n" etc.`. Assuming the end-of-line 
+terminators in a source file are \n never was a great idea, though [PSR-2 does make it clear](http://www.php-fig.org/psr/psr-2/) (section 2.2) that lines MUST be terminated with a \n.
+
 
 The domain_name is the domain that email will be sent from. The selector is the selector you chose to
 store your public key against in your DNS. The public key in the above example will be stored in the
