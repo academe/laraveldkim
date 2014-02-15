@@ -29,6 +29,8 @@ an option, and so this package was created to do the signing at the application 
 Laravel uses [Swift Mailer](http://swiftmailer.org/) to handle its outgoing email, and Swift Mailer has built-in
 support for DKIM signing. This package injects the signing component each time a Swift message is instantiated.
 
+There is a great description of DKIM on [Coding Horror](http://www.codinghorror.com/blog/2010/04/so-youd-like-to-send-some-email-through-code.html)
+
 Limitations
 -----------
 
