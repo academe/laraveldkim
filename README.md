@@ -90,6 +90,8 @@ Your signing key details need to be added to the laravel application config. Add
 
 Note that everything between the two instances of `ENDDKIMKEY` must be right up to the start of the line.
 You may be able to put the RSA key more easily into a dot-file (e.g. `.mail.prod.php`) for more security.
+See [Laravel: Protecting Sensitive Configuration](http://laravel.com/docs/configuration#protecting-sensitive-configuration) 
+for more details on dot file support.
 Another approach may be to read the key from a text file in the config file and return that.
 The "mail.dkim.private_key" needs to be a string containing the full private key, with each line
 terminated with a newline character. It may be safer, if stored as a PHP string, to concatenate each
