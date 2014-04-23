@@ -44,12 +44,19 @@ or replace it). Try it and let me know how it goes.
 
 It also assumes that all emails will be coming from a single domain. I did try giving Swift Mailer multiple
 certificates against multiple domains to see if it would choose the one that matched the sending address,
-but it just added all the certificates without question. A more sophisticated package would not need
-to choose the signing components until later in the request, once the sending domain is known, and then it can choose from
-a bunch of certificates it is given to match the domain. However, if your application uses only one domain
-then that would be overkill. Just the one domain and certificate for now, and we will see how that goes.
+but it just added all the certificates without question. Maybe there is scope to update SwiftMailer so that
+it does not choose and use the signing components until much later in its processing, when it has more
+details of what it is sending and to whom, so it can make better decisions on the settings to use when
+signing. For example, until it knows the sending domain, it really does not know which of a potential
+list of certificates to use for the signing.
+So, just the one domain and certificate for now, and we will see how that goes out in the wild.
 
 All emails will be signed with the same certificate.
+
+Version 1.0.4 introduces a workaround for an issue in the SwiftMailer DKIM signer. Some email headers
+should *never* be included in the signature. SwiftMailer does not exclude those headers automatically,
+so they are now set to "ignore" explicitely in this package. You can check whether this has been
+fixed in SwiftMailer here: https://github.com/swiftmailer/swiftmailer/issues/442
 
 How to Use
 ----------
@@ -108,7 +115,9 @@ Use the new mailer
 ------------------
 
 Now we need to tell Laravel to use the custom mailer rather than the standard built-in mailer. This is done
-in the app.php config file.
+in the app.php config file. Please note that the "new mailer" is just a wrapper for the default Laravel
+mailer, and is not a complete functional replacement, so you won't have to modify the use of the mailer
+in your application.
 
 The `providers` array will have this entry:
 
