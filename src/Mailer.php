@@ -35,6 +35,16 @@ class Mailer extends CoreMailer {
 			if (!empty($private_key) && !empty($domain_name)) {
 				// Do the DKIM signing.
 				$dkim_signer = new Swift_Signers_DKIMSigner($private_key, $domain_name, $selector);
+				
+				// Issue #1: ignore certain headers that cause end-to-end failure.
+				$dkim_signer->ignoreHeader('Return-Path');
+				$dkim_signer->ignoreHeader('Bcc');
+				$dkim_signer->ignoreHeader('DKIM-Signature');
+				$dkim_signer->ignoreHeader('Received');
+				$dkim_signer->ignoreHeader('Comments');
+				$dkim_signer->ignoreHeader('Keywords');
+				$dkim_signer->ignoreHeader('Resent-Bcc');
+				
 				$message->attachSigner($dkim_signer);
 			}
 		} else {
