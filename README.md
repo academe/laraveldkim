@@ -1,7 +1,15 @@
 laraveldkim
 ===========
 
-Sign all outgoing emails in Laravel with a DKIM signature.
+Sign all outgoing emails in Laravel 4 with a DKIM signature.
+
+This package does not work on Laravel 5, and it is
+unlikely I will find the timne or have the need to take it forward to Laravel 5. If you have any fixes though,
+I will be happy to accept pull-requests. Laravel 5 still uses SwiftMailer for its mail transport, so it should
+be possible to fix it.
+
+However, if you are able to sent mail through another server that adds DKIM for you, then that is going to
+be the simplest solution by far.
 
 TODO
 ----
